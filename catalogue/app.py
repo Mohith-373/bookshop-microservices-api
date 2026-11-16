@@ -91,5 +91,5 @@ def change_stock(book_id):
 
 if __name__ == "__main__":
     init_db()
-# 0.0.0.0 so the service is reachable from outside a container next week.
-app.run(host="0.0.0.0", port=PORT, debug=True)
+    # 0.0.0.0 so the service is reachable from outside a container next week.
+    app.run(host="0.0.0.0", port=PORT, debug=True)

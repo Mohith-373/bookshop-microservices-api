@@ -102,7 +102,7 @@ def create_order():
     
   print(f"[orders] order {order_id} created: book {book_id} x{quantity}", flush=True)
   return jsonify(id=order_id, book_id=book_id, quantity=quantity,
-                 total=total, created_at=created)
+                 total=total, created_at=created), 201
 
 if __name__ == "__main__":
  init_db()
