@@ -1,6 +1,7 @@
 services:
   catalogue:
     build: ./catalogue
+    image: mohith373/bookshop-catalogue:1.0
     environment:
       DB_PATH: /data/catalogue.db
     volumes:
@@ -8,6 +9,7 @@ services:
 
   orders:
     build: ./orders
+    image: mohith373/bookshop-orders:1.0
     environment:
       CATALOGUE_URL: http://catalogue:5001
       DB_PATH: /data/orders.db
@@ -18,6 +20,7 @@ services:
 
   gateway:
     build: ./gateway
+    image: mohith373/bookshop-gateway:1.0
     ports:
       - "5000:5000"
     environment:

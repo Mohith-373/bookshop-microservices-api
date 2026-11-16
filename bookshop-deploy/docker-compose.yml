@@ -1,0 +1,34 @@
+# Runs the Bookshop from the images published on Docker Hub.
+# No source code is needed: docker compose up -d
+services:
+  catalogue:
+    image: mohith373/bookshop-catalogue:1.0
+    environment:
+      DB_PATH: /data/catalogue.db
+    volumes:
+      - catalogue-data:/data
+
+  orders:
+    image: mohith373/bookshop-orders:1.0
+    environment:
+      CATALOGUE_URL: http://catalogue:5001
+      DB_PATH: /data/orders.db
+    volumes:
+      - orders-data:/data
+    depends_on:
+      - catalogue
+
+  gateway:
+    image: mohith373/bookshop-gateway:1.0
+    ports:
+      - "5000:5000"
+    environment:
+      CATALOGUE_URL: http://catalogue:5001
+      ORDERS_URL: http://orders:5002
+    depends_on:
+      - catalogue
+      - orders
+
+volumes:
+  catalogue-data:
+  orders-data:
