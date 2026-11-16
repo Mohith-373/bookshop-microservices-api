@@ -1,7 +1,7 @@
 services:
   catalogue:
     build: ./catalogue
-    image: mohith373/bookshop-catalogue:1.0
+    image: mohith373/bookshop-catalogue:1.1
     environment:
       DB_PATH: /data/catalogue.db
     volumes:

@@ -48,7 +48,7 @@ def init_db():
         count = conn.execute(sql_count_books).fetchone()[0]
         if count == 0:
             conn.executemany(sql_seed_books, books_seed,)
-    print(f"[catalogue] database ready at {DB_PATH}", flush=True)
+    print(f"[catalogue v1.1] database ready at {DB_PATH}", flush=True)
 
 @app.get("/health")
 def health():
